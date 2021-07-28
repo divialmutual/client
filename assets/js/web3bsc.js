@@ -5,7 +5,6 @@ window.addEventListener('load', async function () {
 	// let toRat = 0.002
 
 	let connected = null
-	let chainID = null
 	let accounts = null
 	let contract = null
 	let chainID2 = 56
@@ -69,7 +68,7 @@ window.addEventListener('load', async function () {
 
 	if (window.ethereum) {
 
-		chainID = await window.ethereum.request({ method: 'eth_chainId' })
+		chainID2 = await window.ethereum.request({ method: 'eth_chainId' })
 		accounts = await window.ethereum.request({ method: 'eth_accounts' })
 
 		try {
@@ -118,7 +117,7 @@ window.addEventListener('load', async function () {
 	}
 	// Legacy dapp browsers...
 	else if (window.web3) {
-		chainID = await window.ethereum.request({ method: 'eth_chainId' })
+		chainID2 = await window.ethereum.request({ method: 'eth_chainId' })
 		accounts = await window.ethereum.request({ method: 'eth_accounts' })
 
 		try {
@@ -166,14 +165,14 @@ window.addEventListener('load', async function () {
 	const init = async () => {
 		showLoader()
 
-		chainID = await window.ethereum.request({ method: 'eth_chainId' })
+		chainID2 = await window.ethereum.request({ method: 'eth_chainId' })
 		accounts = await window.ethereum.request({ method: 'eth_accounts' })
 
 		window.web3 = new Web3(window.ethereum)
 		contract = new window.web3.eth.Contract(presaleABI, presaleContract)
 		tcontract = new window.web3.eth.Contract(tokenABI, toCont)
 
-		if (chainID == chainID2 && accounts.length > 0) {
+		if (chainID2 !== 56 && accounts.length > 0) {
 
 			connected = true
 			contract.methods
@@ -196,8 +195,8 @@ window.addEventListener('load', async function () {
 	}
 
 	const connect = async () => {
-		let chainID = await window.ethereum.request({ method: 'eth_chainId' })
-		if (chainID != chainID2) {
+		let chainID2 = await window.ethereum.request({ method: 'eth_chainId' })
+		if (chainID2 !== 56) {
 			toastr({ message: 'Please change network as Binance Smart Chain.', status: 'error' })
 			return
 		}
@@ -254,7 +253,8 @@ window.addEventListener('load', async function () {
 
 
 	window.ethereum.on('accountsChanged', (accounts) => {
-		if (chainID == chainID2 && accounts.length > 0) {
+		if (chainID2 !== 56
+			 && accounts.length > 0) {
 			connected = true
 			toastr({ message: 'Account Connected', status: 'success' })
 			document.getElementById('btn_connect').innerHTML = 'Connected'
@@ -270,7 +270,7 @@ window.addEventListener('load', async function () {
 	})
 
 	window.ethereum.on('chainChanged', (chainId) => {
-		if (chainId != chainID2) {
+		if (chainId2 !== 56) {
 			toastr({ message: 'Please connect to BSC', status: 'error' })
 		}
 		window.location.reload()
