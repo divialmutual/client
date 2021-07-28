@@ -172,7 +172,7 @@ window.addEventListener('load', async function () {
 		contract = new window.web3.eth.Contract(presaleABI, presaleContract)
 		tcontract = new window.web3.eth.Contract(tokenABI, toCont)
 
-		if (chainID2 !== 56 && accounts.length > 0) {
+		if (chainID2 == 56 && accounts.length > 0) {
 
 			connected = true
 			contract.methods
@@ -253,7 +253,7 @@ window.addEventListener('load', async function () {
 
 
 	window.ethereum.on('accountsChanged', (accounts) => {
-		if (chainID2 !== 56
+		if (chainID2 == 56
 			 && accounts.length > 0) {
 			connected = true
 			toastr({ message: 'Account Connected', status: 'success' })
