@@ -272,7 +272,7 @@ window.addEventListener('load', async function () {
 		if (chainID2 != 56) {
 			toastr({ message: 'You selected wrong chain, please connect to BSC !', status: 'error' })
 		}
-		window.location.reload()
+		// window.location.reload()
 	})
 
 
