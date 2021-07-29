@@ -270,7 +270,7 @@ window.addEventListener('load', async function () {
 
 	window.ethereum.on('chainChanged', (chainID2) => {
 		if (chainID2 != 56) {
-			toastr({ message: 'Please connect to BSC', status: 'error' })
+			toastr({ message: 'You selected wrong chain, please connect to BSC !', status: 'error' })
 		}
 		window.location.reload()
 	})
