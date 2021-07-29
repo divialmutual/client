@@ -196,7 +196,7 @@ window.addEventListener('load', async function () {
 
 	const connect = async () => {
 		let chainID2 = await window.ethereum.request({ method: 'eth_chainId' })
-		if (chainID2 !== 56) {
+		if (chainID2 != 56) {
 			toastr({ message: 'Please change network as Binance Smart Chain.', status: 'error' })
 			return
 		}
@@ -253,8 +253,7 @@ window.addEventListener('load', async function () {
 
 
 	window.ethereum.on('accountsChanged', (accounts) => {
-		if (chainID2 == 56
-			 && accounts.length > 0) {
+		if (chainID2 == 56 && accounts.length > 0) {
 			connected = true
 			toastr({ message: 'Account Connected', status: 'success' })
 			document.getElementById('btn_connect').innerHTML = 'Connected'
@@ -270,7 +269,7 @@ window.addEventListener('load', async function () {
 	})
 
 	window.ethereum.on('chainChanged', (chainID2) => {
-		if (chainID2 !== 56) {
+		if (chainID2 != 56) {
 			toastr({ message: 'Please connect to BSC', status: 'error' })
 		}
 		window.location.reload()
