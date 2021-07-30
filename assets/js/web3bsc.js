@@ -1,7 +1,7 @@
 window.addEventListener('load', async function () {
-	const toCont = '0x83418a470E5Ee991d49D24c1D8a093b2BA1a04Cb'
-	const presaleContract = '0x720861dE2900677c4bE3e7EAC27e4e8741D2fb6f'
-	const maxSupply = 1000000
+	const toCont = '0x9dA170a2e19A0DFcb34b9bfF59f6a12596AAC424'
+	const presaleContract = '0x19623955bdAe454325b85CF9Ab5a399B9E55e9fE'
+	const maxSupply = 50000
 	// let toRat = 0.002
 
 	let connected = null
